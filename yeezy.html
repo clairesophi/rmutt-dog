@@ -83,14 +83,14 @@
   #store .grey { color: #757575; }
   #store .strike { text-decoration: line-through; }
 
+  /* justified row: equal heights, widths follow each image's native ratio */
   .shots {
     display: flex;
-    align-items: flex-start;   /* keep each image at its native ratio */
     gap: 10px;
     margin: 26px 0;
-    flex-wrap: wrap;
   }
-  .shots img { width: calc(33.33% - 7px); min-width: 140px; height: auto; display: block; }
+  .shots .s { flex-basis: 0; min-width: 0; }  /* flex-grow set inline to the image's aspect ratio */
+  .shots img { width: 100%; height: auto; display: block; }
 
   form.notify { display: flex; gap: 0; max-width: 460px; margin-top: 8px; }
   form.notify input {
@@ -148,9 +148,10 @@
     </div>
 
     <div class="shots">
-      <img src="assets/product-6.jpg" alt="A chihuahua resting in the bed beside a bookshelf">
-      <img src="assets/product-2.jpg" alt="A whippet inspecting the bed on a herringbone floor">
-      <img src="assets/product-1.jpg" alt="An Italian greyhound sitting in the bed, studio shot">
+      <div class="s" style="flex-grow:1.3051"><img src="assets/product-6.jpg" alt="A chihuahua resting in the bed beside a bookshelf"></div>
+      <div class="s" style="flex-grow:1.3316"><img src="assets/product-2.jpg" alt="A whippet inspecting the bed on a herringbone floor"></div>
+      <div class="s" style="flex-grow:0.8004"><img src="assets/product-1.jpg" alt="An Italian greyhound sitting in the bed, studio shot"></div>
+      <div class="s" style="flex-grow:1.0000"><img src="assets/product-8.jpg" alt="Two people study the plush bed across a table in a museum gallery, black and white"></div>
     </div>
 
     <div class="block">
