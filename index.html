@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>R. Mutt</title>
 <link rel="icon" href="assets/heart-tag.svg">
+<link rel="stylesheet" href="assets/fonts.css">
 <!--
   rmutt.dog · a fountain, for dogs
   produced by joey frank
+  type: Zodiak (display) + General Sans (text), via Fontshare
 -->
 <style>
   * { box-sizing: border-box; }
@@ -16,7 +18,7 @@
     margin: 0;
     background: #fff;
     color: #111;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "General Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
   }
@@ -25,14 +27,19 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 18px 20px;
+    padding: 16px 20px;
     font-size: 14px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    font-weight: 600;
     flex: 0 0 auto;
   }
   nav a { color: #111; text-decoration: none; }
   nav a:hover, nav a:focus-visible { color: #999; }
+  nav .mark {
+    font-family: "Zodiak", "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+  }
 
   .hero {
     flex: 1 1 auto;
@@ -58,7 +65,11 @@
     padding: 12px 20px 14px;
     font-size: 13px;
   }
-  .heromatter .t b { font-weight: 700; }
+  .heromatter .t b {
+    font-family: "Zodiak", "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 15px;
+  }
   .heromatter .t span { color: #999; }
   .heromatter .right { color: #999; display: flex; gap: 18px; align-items: baseline; }
   .heromatter a { color: #111; text-decoration: none; font-weight: 700; }
@@ -98,7 +109,7 @@
 <body>
 
 <nav>
-  <a href="index.html">R. Mutt</a>
+  <a class="mark" href="index.html">R.&hairsp;Mutt</a>
   <a href="shop.html">Shop</a>
 </nav>
 
