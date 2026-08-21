@@ -13,9 +13,10 @@ gray (#999 / #b3b3b3) secondary text, product floating in a #f2f2f2 panel,
 1px #e5e5e5 rules, tiny nav. Earlier Alibaba-marketplace and Times-serif
 gallery versions were rejected as too much / not high end enough.
 
-- `index.html` — DVD-screensaver homepage: the dog-in-bed image bounces around
-  a white screen, growl audio toggle (bottom right), quiet uppercase ticker
-  tape along the bottom, shop link top right.
+- `index.html` — full-bleed hero homepage (the DVD-screensaver bounce was
+  replaced 2026-08-20 at Claire's request, "more high end"): whippet-and-bed
+  interior photo fills the viewport, caption bar under it, growl audio toggle,
+  quiet uppercase ticker tape along the bottom, shop link top right.
 - `shop.html` — the store. Statement headline (black phrase then gray phrase),
   product panel + thumbnails, "Out of stock", email capture on a single
   underline, details rows, price US $191.70 plus shipping.
@@ -27,16 +28,17 @@ gallery versions were rejected as too much / not high end enough.
 
 ## Missing assets (drop-in, no code changes needed)
 
-The code already points at these filenames and falls back to a drawn SVG
-placeholder (`assets/bed-placeholder.svg`) until they exist:
+Have (2026-08-20, from PNGs Claire saved to Desktop): `assets/hero.jpg`
+(whippet sniffing the bed, interior), `assets/product-1.jpg` (studio shot,
+Italian greyhound in bed), `assets/product-2.jpg` (same as hero). The shop
+gallery array in shop.html lists just these two; a drawn SVG fallback
+(`assets/bed-placeholder.svg`) covers any missing image.
 
-- `assets/bed.png` — the bouncer on the homepage. Ideally the white-background
-  product shot with the background removed (transparent PNG), ~600px wide.
-- `assets/product-1.jpg` … `product-4.jpg` — shop gallery. Claire has 4 photos
-  (3 apartment shots + 1 white-background studio shot) in her Messages; the
-  terminal can't read `~/Library/Messages` (macOS privacy). Save/AirDrop them
-  out and drop them in.
+Still missing:
 - `assets/growl.mp3` — dog growling loop for the homepage. Joey/Claire to supply.
+- Optional: the 4 chihuahua apartment/studio photos still stuck in Claire's
+  Messages (terminal can't read `~/Library/Messages`, macOS privacy). If she
+  saves them out, add as product-3.jpg… and extend SHOTS in shop.html.
 
 ## Hosting / deploy
 
