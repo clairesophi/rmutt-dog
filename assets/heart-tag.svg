@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- beanie-style heart hang tag, "rm" edition -->
+  <defs>
+    <path id="heart" d="M100 178 C 40 130 14 96 14 62 C 14 32 38 14 62 14 C 80 14 93 24 100 38 C 107 24 120 14 138 14 C 162 14 186 32 186 62 C 186 96 160 130 100 178 Z"/>
+  </defs>
+  <use href="#heart" fill="#d40d17"/>
+  <use href="#heart" fill="none" stroke="#f5c518" stroke-width="7" transform="translate(100 100) scale(0.88) translate(-100 -100)"/>
+  <circle cx="100" cy="26" r="7" fill="#fff" stroke="#8c060d" stroke-width="3"/>
+  <text x="100" y="118" text-anchor="middle" font-family="'Comic Sans MS','Marker Felt',cursive" font-size="58" font-weight="bold" fill="#fff" transform="rotate(-8 100 100)">rm</text>
+  <text x="100" y="60" text-anchor="middle" font-family="'Comic Sans MS','Marker Felt',cursive" font-size="15" font-weight="bold" fill="#f5c518" transform="rotate(-8 100 100)">ORIGINAL</text>
+  <text x="100" y="142" text-anchor="middle" font-family="'Comic Sans MS','Marker Felt',cursive" font-size="14" font-weight="bold" fill="#f5c518" transform="rotate(-8 100 100)">READY•MADES</text>
+</svg>

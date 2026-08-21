@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 420" width="460" height="420">
+  <!-- placeholder drawing of the Fountain dog bed (swap for real photo cutout: assets/bed.png) -->
+  <defs>
+    <radialGradient id="fleece" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#f3ead8"/>
+      <stop offset="100%" stop-color="#e2d5bc"/>
+    </radialGradient>
+    <linearGradient id="vinyl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e9e6df"/>
+    </linearGradient>
+  </defs>
+  <!-- tall back rim of the urinal -->
+  <path d="M150 250 C 105 210 100 120 150 70 C 185 35 250 30 285 70 C 330 120 325 210 292 252
+           L 262 240 C 292 200 295 130 262 98 C 238 74 200 74 178 98 C 148 130 152 205 185 242 Z"
+        fill="url(#vinyl)" stroke="#c9c4ba" stroke-width="4" stroke-linejoin="round"/>
+  <!-- basin -->
+  <ellipse cx="225" cy="295" rx="150" ry="88" fill="url(#vinyl)" stroke="#c9c4ba" stroke-width="4"/>
+  <!-- fleece cushion -->
+  <ellipse cx="225" cy="288" rx="108" ry="56" fill="url(#fleece)" stroke="#d5c7ab" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/>
+  <!-- drain spout, right -->
+  <g stroke="#c9c4ba" stroke-width="4" fill="#ffffff">
+    <rect x="362" y="300" width="30" height="34" rx="6"/>
+    <rect x="388" y="306" width="42" height="24" rx="10"/>
+  </g>
+  <!-- flush-valve tab, left -->
+  <g stroke="#c9c4ba" stroke-width="4" fill="#ffffff">
+    <path d="M76 292 C 52 288 42 300 46 316 C 50 332 66 338 84 332 Z"/>
+    <circle cx="62" cy="306" r="3.5" fill="#aaa49a" stroke="none"/>
+    <circle cx="62" cy="320" r="3.5" fill="#aaa49a" stroke="none"/>
+  </g>
+  <!-- signature -->
+  <text x="225" y="345" text-anchor="middle" font-family="'Comic Sans MS','Marker Felt',cursive"
+        font-size="34" font-weight="bold" fill="#111" transform="rotate(-2 225 345)">R. Mutt <tspan font-size="22">1917</tspan></text>
+</svg>
