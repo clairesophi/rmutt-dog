@@ -1,84 +1,54 @@
 # rmutt.dog — HANDOFF
 
-A fountain, for dogs. The website for the plush readymade dog bed (Duchamp's
-Fountain as a plushy), produced by Joey Frank. Read this first; keep it updated.
+The website for Dog Fountain, the plush readymade dog bed (Duchamp's Fountain
+as a plushy), produced by Joey Frank. Read this first; keep it updated.
 
-## What the site is
+## The site
 
-Hand-rolled static HTML, no build step, no framework.
+One page, hand-rolled static HTML, no build step.
 
-THREE design options live side by side (2026-08-20), Claire is choosing:
-1. `index.html` + `shop.html`, the openstatement.co direction described below.
-2. `wiki.html`, "Joey Frank's plush dog bed" as a classic Wikipedia article:
-   infobox with a slow crossfade carousel of the photos, every Shop/Buy/edit
-   link opens a sold-out buy popup (bed-solo.jpg + email form).
-3. `yeezy.html`, stark yeezy.com-style void store: mono uppercase, one product
-   image, bag icon opens a full-screen store overlay with info, three photos,
-   and the email form.
-All three share signup.js for the email capture. Whichever wins should be
-renamed/linked as index.html.
+- `index.html` — stark mono-uppercase "void store": white page, one product
+  image, "R.MUTT / Produced by Joey Frank",
+  bag icon (or clicking the product) opens a full-screen store overlay with
+  the description, a justified equal-height photo row (click any photo for a
+  near-fullscreen lightbox, X to close), and the Inquire email form. The
+  credit pins to the bottom of the overlay.
+- `signup.js` — email form handler. Posts to a Google Apps Script web app that
+  appends rows to a Google Sheet in Claire's Drive. `SHEETS_ENDPOINT` at the
+  top is EMPTY until the script is deployed (`apps-script/Code.gs` has the
+  code + 4-step setup). With no endpoint the form politely says so.
+- `assets/` — product-1 (studio greyhound), product-2 (whippet interior),
+  product-6 (chihuahua bookshelf), product-8 (chess-match remix, derived from
+  Julian Wasser's 1963 Duchamp photo, licensing is Claire/Joey's call),
+  bed-solo (empty bed, white bg, the landing image), heart-tag.svg (favicon).
 
-Type (added 2026-08-20): display serif is Zodiak, text face is General Sans,
-both free from Fontshare, self-hosted in assets/fonts/ via assets/fonts.css.
-Zodiak was picked to echo the MoMA Duchamp catalog cover lettering Claire
-referenced. Wordmark, statement headlines, and "Fountain" titles are Zodiak;
-everything else General Sans.
+Copy facts: product is "Dog Fountain". Dog bed, pleather, removable fleece,
+hand-stitched lettering. Limited edition of 150. US $191.70 plus shipping
+(191.7 = 1917). Sold out; form label is "Inquire". No em-dashes in site copy
+(Claire's rule).
 
-Design direction (settled after a few rounds): super simple, high end, in the
-vibe of openstatement.co. Bold Helvetica statement typography, white page,
-gray (#999 / #b3b3b3) secondary text, product floating in a #f2f2f2 panel,
-1px #e5e5e5 rules, tiny nav. Earlier Alibaba-marketplace and Times-serif
-gallery versions were rejected as too much / not high end enough.
-
-- `index.html` — full-bleed hero homepage (the DVD-screensaver bounce was
-  replaced 2026-08-20 at Claire's request, "more high end"): whippet-and-bed
-  interior photo fills the viewport, caption bar under it, growl audio toggle,
-  quiet uppercase ticker tape along the bottom, shop link top right.
-- `shop.html` — the store. Statement headline (black phrase then gray phrase),
-  product panel + thumbnails, "Out of stock", email capture on a single
-  underline, details rows, price US $191.70 plus shipping.
-- `signup.js` — restock form handler. Posts to a Google Apps Script web app
-  that appends to a Google Sheet. `SHEETS_ENDPOINT` at the top is EMPTY until
-  the Apps Script is deployed (see `apps-script/Code.gs` for the code + setup).
-  With no endpoint, the form politely says it isn't plugged in yet.
-- `assets/` — images and audio (see "Missing assets").
-
-## Missing assets (drop-in, no code changes needed)
-
-Have (2026-08-20, from PNGs Claire saved to Desktop): `assets/hero.jpg`
-(whippet sniffing the bed, interior), `assets/product-1.jpg` (studio shot,
-Italian greyhound in bed), `assets/product-2.jpg` (same as hero). The shop
-gallery array in shop.html lists just these two; a drawn SVG fallback
-(`assets/bed-placeholder.svg`) covers any missing image.
-
-Still missing:
-- `assets/growl.mp3` — dog growling loop for the homepage. Joey/Claire to supply.
-- Optional: the 4 chihuahua apartment/studio photos still stuck in Claire's
-  Messages (terminal can't read `~/Library/Messages`, macOS privacy). If she
-  saves them out, add as product-3.jpg… and extend SHOTS in shop.html.
+Earlier design rounds (Alibaba pastiche, Times gallery, openstatement.co
+hero + shop with Zodiak/General Sans, Wikipedia-article version) were removed
+2026-08-20 at Claire's request; they live in git history if ever needed.
 
 ## Hosting / deploy
 
-- GitHub repo under the `clairesophi` account (like clairesophie-site),
-  deployed with GitHub Pages. Deploy = push to `main`.
-- Domain `rmutt.dog` currently points at Hostinger (old one-line signup page
-  with `signup.php`). Claire will remap DNS later. When she does: add a `CNAME`
-  file containing `rmutt.dog`, set the custom domain in repo Settings → Pages,
-  and point DNS (A records to GitHub Pages IPs or ALIAS/ANAME to
-  `clairesophi.github.io`).
+- Repo: github.com/clairesophi/rmutt-dog, GitHub Pages from main.
+  Live: clairesophi.github.io/rmutt-dog
+- No terminal push auth yet (no keychain credential or SSH key; Claire pushes
+  her other site via GitHub Desktop). Deploys so far were done through the
+  GitHub web UI in Claire's Chrome (upload files / github.dev).
+- Domain rmutt.dog: still points at Hostinger (old signup page; its
+  /admin/ is a basic-auth page, likely the old email list, creds with Claire).
+  To remap: log into the Hostinger ACCOUNT (likely Joey's), DNS zone for
+  rmutt.dog: replace A records with GitHub Pages IPs 185.199.108.153 /
+  109.153 / 110.153 / 111.153, CNAME www -> clairesophi.github.io. Then set
+  custom domain rmutt.dog in repo Settings→Pages (+ Enforce HTTPS when the
+  cert issues).
 
 ## To do
 
-- [ ] Real photos into `assets/` (see above)
-- [ ] Growl audio
-- [ ] Deploy Google Apps Script, paste URL into `SHEETS_ENDPOINT` in signup.js
-- [ ] Domain remap (later, per Claire)
-- [ ] Decide if `woof@rmutt.dog` is a real address (used as form fallback text
-      in signup.js) — change it there if not
-
-## Taste notes
-
-- Claire dislikes em-dashes in site copy (reads as AI). Use commas/colons.
-- Keep it view-source friendly, hand-made, funny. Dada jokes should be played
-  completely straight in marketplace UI language.
-- Price is always $191.70 (1917). Rejection date of Fountain: April 9, 1917.
+- [ ] Google Sheet + Apps Script deploy, paste URL into SHEETS_ENDPOINT
+- [ ] Domain remap (blocked on Hostinger account login)
+- [ ] Export old signup emails from rmutt.dog/admin/ before DNS flips
+- [ ] Decide if woof@rmutt.dog (fallback text in signup.js) is real
