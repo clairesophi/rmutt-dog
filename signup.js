@@ -1,7 +1,7 @@
 /* restock-list signup → Google Sheets (via a Google Apps Script web app).
    Paste the deployed web-app URL below. See HANDOFF.md for the 3-minute setup. */
 
-var SHEETS_ENDPOINT = ""; /* e.g. "https://script.google.com/macros/s/XXXX/exec" */
+var SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbz4DYHlSAYVI1PYnFTgKDilaAbuHmgqBJEH6xbOa2r4OLWuD-GHfOroh70gIeMixQi6/exec";
 
 (function () {
   var form = document.getElementById("notify-form");
