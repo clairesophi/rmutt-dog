@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R. Mutt</title>
+<link rel="icon" href="assets/heart-tag.svg">
+<!--
+  rmutt.dog · a fountain, for dogs
+  produced by joey frank
+-->
+<style>
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: #fff;
+    color: #111;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 18px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  nav a { color: #111; text-decoration: none; }
+  nav a:hover, nav a:focus-visible { color: #999; }
+
+  #bouncer {
+    position: fixed;
+    left: 0; top: 0;
+    width: min(36vw, 320px);
+    will-change: transform;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .corner {
+    position: fixed;
+    z-index: 5;
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 0.01em;
+  }
+  #credit { left: 20px; bottom: 44px; }
+  #soundwrap { right: 20px; bottom: 44px; }
+  #soundbtn {
+    font: inherit;
+    color: #999;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  #soundbtn:hover, #soundbtn:focus-visible { color: #111; }
+
+  #ticker {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 6;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    color: #999;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 2.6;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  #ticker .reel { display: inline-block; padding-left: 100vw; animation: reel 60s linear infinite; }
+  @keyframes reel { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    #ticker .reel { animation: none; padding-left: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">R. Mutt</a>
+  <a href="shop.html">Shop</a>
+</nav>
+
+<a href="shop.html" aria-label="Fountain dog bed — enter the shop">
+  <img id="bouncer" src="assets/bed.png"
+       onerror="this.onerror=null; this.src='assets/bed-placeholder.svg'"
+       alt="A small tan chihuahua sitting in a plush white dog bed shaped like Duchamp's urinal, signed R. Mutt 1917">
+</a>
+
+<p class="corner" id="credit">Produced by Joey Frank</p>
+<p class="corner" id="soundwrap"><button id="soundbtn" type="button" aria-pressed="false">Sound off</button></p>
+
+<div id="ticker" aria-hidden="true"><span class="reel" id="reel"></span></div>
+
+<audio id="growl" src="assets/growl.mp3" loop preload="auto"></audio>
+
+<script>
+/* ticker */
+var LINES = [
+  "Fountain, the readymade dog bed",
+  "US $191.70 plus shipping",
+  "Currently out of stock",
+  "Interested parties may leave an address in the shop",
+  "As seen at the Society of Independent Artists, 1917 (rejected)",
+  "An ordinary article of everyday life",
+  "He chose it."
+];
+var tape = LINES.join("&ensp;&ensp;&#8226;&ensp;&ensp;") + "&ensp;&ensp;&#8226;&ensp;&ensp;";
+document.getElementById("reel").innerHTML = tape + tape; /* doubled so the loop is seamless */
+
+/* dvd bounce */
+var el = document.getElementById("bouncer");
+var x = 60, y = 90, dx = 1.6, dy = 1.3;
+
+function step() {
+  var maxX = window.innerWidth - el.offsetWidth;
+  var maxY = window.innerHeight - el.offsetHeight - 30; /* clear of the ticker */
+  x += dx; y += dy;
+  var hit = false;
+  if (x <= 0)    { x = 0;    dx =  Math.abs(dx); hit = true; }
+  if (x >= maxX) { x = maxX; dx = -Math.abs(dx); hit = true; }
+  if (y <= 0)    { y = 0;    dy =  Math.abs(dy); hit = true; }
+  if (y >= maxY) { y = maxY; dy = -Math.abs(dy); hit = true; }
+  if (hit) growlNudge();
+  el.style.transform = "translate(" + x + "px," + y + "px)";
+  requestAnimationFrame(step);
+}
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  el.style.transform = "translate(25vw, 25vh)";
+} else {
+  requestAnimationFrame(step);
+}
+
+/* growl */
+var audio = document.getElementById("growl");
+var btn = document.getElementById("soundbtn");
+var wantSound = false;
+
+function setBtn() {
+  btn.textContent = wantSound ? "Sound on" : "Sound off";
+  btn.setAttribute("aria-pressed", String(wantSound));
+}
+btn.addEventListener("click", function () {
+  wantSound = !wantSound;
+  if (wantSound) { audio.play().catch(function(){ wantSound = false; setBtn(); }); }
+  else { audio.pause(); }
+  setBtn();
+});
+/* a wall hit makes the growl briefly louder */
+function growlNudge() {
+  if (!wantSound || audio.paused) return;
+  audio.volume = 1;
+  setTimeout(function(){ audio.volume = 0.55; }, 400);
+}
+audio.volume = 0.55;
+</script>
+</body>
+</html>
