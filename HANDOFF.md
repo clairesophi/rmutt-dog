@@ -7,6 +7,23 @@ Fountain as a plushy), produced by Joey Frank. Read this first; keep it updated.
 
 Hand-rolled static HTML, no build step, no framework.
 
+THREE design options live side by side (2026-08-20), Claire is choosing:
+1. `index.html` + `shop.html`, the openstatement.co direction described below.
+2. `wiki.html`, "Joey Frank's plush dog bed" as a classic Wikipedia article:
+   infobox with a slow crossfade carousel of the photos, every Shop/Buy/edit
+   link opens a sold-out buy popup (bed-solo.jpg + email form).
+3. `yeezy.html`, stark yeezy.com-style void store: mono uppercase, one product
+   image, bag icon opens a full-screen store overlay with info, three photos,
+   and the email form.
+All three share signup.js for the email capture. Whichever wins should be
+renamed/linked as index.html.
+
+Type (added 2026-08-20): display serif is Zodiak, text face is General Sans,
+both free from Fontshare, self-hosted in assets/fonts/ via assets/fonts.css.
+Zodiak was picked to echo the MoMA Duchamp catalog cover lettering Claire
+referenced. Wordmark, statement headlines, and "Fountain" titles are Zodiak;
+everything else General Sans.
+
 Design direction (settled after a few rounds): super simple, high end, in the
 vibe of openstatement.co. Bold Helvetica statement typography, white page,
 gray (#999 / #b3b3b3) secondary text, product floating in a #f2f2f2 panel,
