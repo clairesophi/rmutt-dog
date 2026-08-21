@@ -47,7 +47,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px 60px;
+    padding: 80px 20px 90px;
   }
   main img {
     width: min(440px, 78vw);
@@ -61,6 +61,18 @@
   .caption p { margin: 0; }
   .caption .sub { color: #757575; }
 
+  /* credit pinned to the bottom of the viewport, no scrolling needed */
+  #page-credit {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 5;
+    margin: 0;
+    padding: 16px 20px;
+    text-align: center;
+    background: #fff;
+    color: #757575;
+  }
+
   /* ---- store panel ---- */
   #store[hidden] { display: none; }
   #store {
@@ -71,12 +83,16 @@
   #store .inner {
     max-width: 760px;
     margin: 0;
-    padding: 72px 20px 28px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    padding: 72px 20px 90px;  /* bottom clearance for the fixed credit */
   }
-  #store .credit { margin-top: auto; padding-top: 40px; margin-bottom: 0; }
+  #store .block.credit {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 11;
+    margin: 0;
+    padding: 16px 20px;
+    background: #fff;
+  }
   #store-close {
     position: fixed; top: 16px; left: 20px;
     background: none; border: none; padding: 0; cursor: pointer;
@@ -148,9 +164,10 @@
   <img src="assets/bed-solo.jpg" id="hero-product" alt="A plush white dog bed in the shape of Duchamp's urinal, signed R. Mutt 1917, on a white background">
   <div class="caption">
     <p>R.MUTT</p>
-    <p class="sub">Produced by Joey Frank</p>
   </div>
 </main>
+
+<p id="page-credit">Produced by Joey Frank</p>
 
 <!-- ---- the store ---- -->
 <div id="store" hidden>
